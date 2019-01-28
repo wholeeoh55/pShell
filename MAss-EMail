@@ -1,0 +1,13 @@
+$From = "sales@ahing.com"
+$To = gc C:\Users\PATHesktop\list.txt
+#$Attachment = "C:\users\PATH\DOC"
+$Subject = "test"
+$Body = Get-Content C:\Users\julio\Desktop\HTML.txt -Raw
+$SMTPServer = "x.x.x.x"
+$SMTPPort = "587"
+$creds = Get-Credential
+#$Body put rawhtml in here maybe
+
+foreach ($t in $To) {
+    Send-MailMessage -From $From -to $t -Subject $Subject -Body $Body -BodyAsHtml -SmtpServer $SMTPServer -port $SMTPPort -Credential $creds –DeliveryNotificationOption OnSuccess
+    }
